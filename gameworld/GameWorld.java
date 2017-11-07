@@ -27,6 +27,7 @@ public class GameWorld extends JComponent implements ActionListener {
 		test_image1 = new JdImage(300,300,"resources/test_image.png");
 		clock = new Timer(1000, world);
 		gameloop = new Timer(33, world);
+		gameloop.start();
 		clock.start();
 		
 		window.setVisible(true);
@@ -50,8 +51,14 @@ public class GameWorld extends JComponent implements ActionListener {
 		}
 		else if (e.getSource() == clock) {
 			seconds_passed+=1;
+			System.out.printf("%s seconds have passed\n",seconds_passed);
 			if (seconds_passed >= 10) {
+				
 				clock.stop();
+				System.out.println("game world clock stopped");
+				
+				gameloop.stop();
+				System.out.println("gameloop stopped");
 			}
 		}
 	}
