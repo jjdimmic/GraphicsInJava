@@ -25,6 +25,7 @@ public class GameWorld extends JComponent implements ActionListener {
 		window.add(world);
 		
 		test_image1 = new JdImage(300,300,"resources/test_image.png");
+		test_image1.setBoundingBoxVisible(true);
 		clock = new Timer(1000, world);
 		gameloop = new Timer(33, world);
 		gameloop.start();
@@ -37,16 +38,16 @@ public class GameWorld extends JComponent implements ActionListener {
 	public void paintComponent(Graphics g) {
 		g.setColor(new Color(130,232,227));
 		g.fillRect(0,0,640,480);
-		g.setColor(new Color(255,0,0));
 		window.setSize(400,400);
-		g.fillOval(worldWidth/2-50/2,worldHeight/2-50/2,50,50);
+		/* g.setColor(new Color(255,0,0));
+		g.fillOval(worldWidth/2-50/2,worldHeight/2-50/2,50,50); */
 		test_image1.drawUpdates(g);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == gameloop) {
-			test_image1.move(5,0);
+			test_image1.move(1,0);
 			repaint();
 		}
 		else if (e.getSource() == clock) {

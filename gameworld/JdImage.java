@@ -66,9 +66,6 @@ public class JdImage {
 		this.botRightY += (float) dy;
 		
 		this.botLeftX += (float) dx;
-		this.botRightY += (float) dy;
-		
-		this.botLeftX += (float) dx;
 		this.botLeftY += (float) dy;
 		
 		this.botRightX += (float) dx;
@@ -93,13 +90,13 @@ public class JdImage {
 	public void drawUpdates(Graphics g) {
 		if (this.boundingBoxVisible) {
 			//show visible bounds of image
-			g.setColor(new Color(255,255,255));
+			g.setColor(new Color(0,0,0));
 			g.fillOval(Math.round(this.topLeftX-2),Math.round(this.topLeftY-2),4,4);
-			g.setColor(new Color(255,255,255));
+			g.setColor(new Color(0,0,0));
 			g.fillOval(Math.round(this.topRightX-2),Math.round(this.topRightY-2),4,4);
-			g.setColor(new Color(255,255,255));
+			g.setColor(new Color(0,0,0));
 			g.fillOval(Math.round(this.botLeftX-2),Math.round(this.botLeftY-2),4,4);
-			g.setColor(new Color(255,255,255));
+			g.setColor(new Color(0,0,0));
 			g.fillOval(Math.round(this.botRightX-2),Math.round(this.botRightY-2),4,4);
 		}
 		g.drawImage(this.img, this.centerX-this.width/2,this.centerY-this.height/2,null);
