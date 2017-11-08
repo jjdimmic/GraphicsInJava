@@ -86,6 +86,11 @@ public class JdImage {
 			this.rotation = degrees;
 		}
 		
+		double newTopLeftX = ((double) this.topLeftX) * Math.cos(Math.toRadians((float) this.rotation)) - ((double) this.topLeftY) * Math.sin(Math.toRadians((float) this.rotation)); 
+		double newTopLeftY = ((double) this.topLeftX) * Math.sin(Math.toRadians((float) this.rotation)) + ((double) this.topLeftY) * Math.cos(Math.toRadians((float) this.rotation));
+		this.topLeftX = (float) newTopLeftX;
+		this.topLeftY = (float) newTopLeftY;
+		
 		this.at = AffineTransform.getTranslateInstance(this.centerX-this.width/2,this.centerY-this.height/2);
 		this.at.rotate(Math.toRadians(this.rotation),this.width/2,this.height/2);
 	}

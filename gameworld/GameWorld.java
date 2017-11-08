@@ -48,7 +48,7 @@ public class GameWorld extends JComponent implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == gameloop) {
 			test_image1.move(1,0);
-			test_image1.rotate(-1);
+			test_image1.rotate(1);
 			repaint();
 		}
 		else if (e.getSource() == clock) {
