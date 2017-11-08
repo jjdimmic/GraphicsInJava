@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.*;
+import java.awt.geom.AffineTransform;
 
 public class JdImage {
 	BufferedImage img = null;
@@ -26,6 +27,9 @@ public class JdImage {
 	float botRightX;
 	float botRightY;
 	
+	int rotation = 0;
+	AffineTransform at;
+	
 	boolean boundingBoxVisible = false;
 	
 	public JdImage(int centerX, int centerY, String imageName) {
@@ -41,6 +45,8 @@ public class JdImage {
 		
 		this.width = this.img.getWidth();
 		this.height = this.img.getHeight();
+		
+		this.at = AffineTransform.getTranslateInstance(this.centerX-this.width/2,this.centerY-this.height/2);
 		
 		this.topLeftX = (float) (this.centerX - this.width/2);
 		this.topLeftY = (float) (this.centerY - this.height/2);
@@ -58,6 +64,7 @@ public class JdImage {
 	public void move(int dx, int dy) {
 		this.centerX += dx;
 		this.centerY += dy;
+		this.at = AffineTransform.getTranslateInstance(this.centerX-this.width/2,this.centerY-this.height/2);
 		
 		this.topLeftX += (float) dx;
 		this.topLeftY += (float) dy;
@@ -71,6 +78,16 @@ public class JdImage {
 		this.botRightX += (float) dx;
 		this.botRightY += (float) dy;
 		
+	}
+	
+	public void rotate(int degrees) {
+		this.rotation += degrees;
+		if (this.rotation > 360 || this.rotation < -360) {
+			this.rotation = degrees;
+		}
+		
+		this.at = AffineTransform.getTranslateInstance(this.centerX-this.width/2,this.centerY-this.height/2);
+		this.at.rotate(Math.toRadians(this.rotation),this.width/2,this.height/2);
 	}
 	
 	public void setBoundingBoxVisible(boolean visibility) {
@@ -88,6 +105,8 @@ public class JdImage {
 	}
 	
 	public void drawUpdates(Graphics g) {
+		Graphics2D g2D = (Graphics2D)g;
+		
 		if (this.boundingBoxVisible) {
 			//show visible bounds of image
 			g.setColor(new Color(0,0,0));
@@ -99,7 +118,7 @@ public class JdImage {
 			g.setColor(new Color(0,0,0));
 			g.fillOval(Math.round(this.botRightX-2),Math.round(this.botRightY-2),4,4);
 		}
-		g.drawImage(this.img, this.centerX-this.width/2,this.centerY-this.height/2,null);
+		g2D.drawImage(this.img,this.at,null);
 	}
 		
 }
