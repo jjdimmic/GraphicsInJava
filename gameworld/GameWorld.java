@@ -16,6 +16,10 @@ public class GameWorld extends JComponent implements ActionListener {
 	private static Timer gameloop;
 	private static int seconds_passed = 0;
 	static JdImage test_image1;
+	static int object_mass = 1;
+	static int gforce = 2;
+	static int object_forceX = 0;
+	static int object_forceY = 0;
 	
 	public static void main(String[] args) {
 		JFrame window = new JFrame("Game World");
@@ -47,7 +51,16 @@ public class GameWorld extends JComponent implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == gameloop) {
-			test_image1.move(1,0);
+			object_forceY += gforce*object_mass;
+			
+			
+			/* if (test_image1.getTopLeftX() <= 0) {
+				
+			}
+			if (test_image1.getTopLeftX() >= worldWidth) {
+				
+			} */
+			test_image1.move(1,1);
 			test_image1.rotate(1);
 			repaint();
 		}
