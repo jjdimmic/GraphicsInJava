@@ -81,15 +81,68 @@ public class JdImage {
 	}
 	
 	public void rotate(int degrees) {
+		double tempX,tempY;
+		
 		this.rotation += degrees;
 		if (this.rotation > 360 || this.rotation < -360) {
 			this.rotation = degrees;
 		}
 		
-		double newTopLeftX = ((double) this.topLeftX) * Math.cos(Math.toRadians((float) this.rotation)) - ((double) this.topLeftY) * Math.sin(Math.toRadians((float) this.rotation)); 
-		double newTopLeftY = ((double) this.topLeftX) * Math.sin(Math.toRadians((float) this.rotation)) + ((double) this.topLeftY) * Math.cos(Math.toRadians((float) this.rotation));
-		this.topLeftX = (float) newTopLeftX;
-		this.topLeftY = (float) newTopLeftY;
+		//----TopLeftPoint----
+		//move point to origin
+		this.topLeftX -= (float) this.centerX;
+        this.topLeftY -= (float) this.centerY;		
+		
+		//apply rotation to point
+		tempX = ((double) this.topLeftX) * Math.cos(Math.toRadians((float) degrees)) - ((double) this.topLeftY) * Math.sin(Math.toRadians((float) degrees)); 
+		tempY = ((double) this.topLeftX) * Math.sin(Math.toRadians((float) degrees)) + ((double) this.topLeftY) * Math.cos(Math.toRadians((float) degrees));
+		
+		//move point back
+		this.topLeftX = (float) (tempX + this.centerX);
+		this.topLeftY = (float) (tempY + this.centerY);
+
+		
+		//----TopRightPoint----
+		//move point to origin
+		this.topRightX -= (float) this.centerX;
+        this.topRightY -= (float) this.centerY;		
+		
+		//apply rotation to point
+		tempX = ((double) this.topRightX) * Math.cos(Math.toRadians((float) degrees)) - ((double) this.topRightY) * Math.sin(Math.toRadians((float) degrees)); 
+		tempY = ((double) this.topRightX) * Math.sin(Math.toRadians((float) degrees)) + ((double) this.topRightY) * Math.cos(Math.toRadians((float) degrees));
+		
+		//move point back
+		this.topRightX = (float) (tempX + this.centerX);
+		this.topRightY = (float) (tempY + this.centerY);
+		
+		
+		//----BotLeftPoint----
+		//move point to origin
+		this.botLeftX -= (float) this.centerX;
+        this.botLeftY -= (float) this.centerY;		
+		
+		//apply rotation to point
+		tempX = ((double) this.botLeftX) * Math.cos(Math.toRadians((float) degrees)) - ((double) this.botLeftY) * Math.sin(Math.toRadians((float) degrees)); 
+		tempY = ((double) this.botLeftX) * Math.sin(Math.toRadians((float) degrees)) + ((double) this.botLeftY) * Math.cos(Math.toRadians((float) degrees));
+		
+		//move point back
+		this.botLeftX = (float) (tempX + this.centerX);
+		this.botLeftY = (float) (tempY + this.centerY);
+		
+		
+		//----BotRightPoint----
+		//move point to origin
+		this.botRightX -= (float) this.centerX;
+        this.botRightY -= (float) this.centerY;		
+		
+		//apply rotation to point
+		tempX = ((double) this.botRightX) * Math.cos(Math.toRadians((float) degrees)) - ((double) this.botRightY) * Math.sin(Math.toRadians((float) degrees)); 
+		tempY = ((double) this.botRightX) * Math.sin(Math.toRadians((float) degrees)) + ((double) this.botRightY) * Math.cos(Math.toRadians((float) degrees));
+		
+		//move point back
+		this.botRightX = (float) (tempX + this.centerX);
+		this.botRightY = (float) (tempY + this.centerY);
+		
 		
 		this.at = AffineTransform.getTranslateInstance(this.centerX-this.width/2,this.centerY-this.height/2);
 		this.at.rotate(Math.toRadians(this.rotation),this.width/2,this.height/2);

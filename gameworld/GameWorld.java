@@ -24,7 +24,7 @@ public class GameWorld extends JComponent implements ActionListener {
 		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		window.add(world);
 		
-		test_image1 = new JdImage(300,300,"resources/test_image.png");
+		test_image1 = new JdImage(300,300,"resources/red_rect.png");
 		test_image1.setBoundingBoxVisible(true);
 		clock = new Timer(1000, world);
 		gameloop = new Timer(33, world);
