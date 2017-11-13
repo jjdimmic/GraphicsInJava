@@ -104,7 +104,7 @@ public class JdImage {
 		this.topLeftY += (float) dy;
 		
 		this.topRightX += (float) dx;
-		this.botRightY += (float) dy;
+		this.topRightY += (float) dy;
 		
 		this.botLeftX += (float) dx;
 		this.botLeftY += (float) dy;

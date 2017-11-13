@@ -28,7 +28,7 @@ public class GameWorld extends JComponent implements ActionListener {
 		window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		window.add(world);
 		
-		test_image1 = new JdImage(300,300,"resources/red_rect.png");
+		test_image1 = new JdImage(300,100,"resources/red_rect.png");
 		test_image1.setBoundingBoxVisible(true);
 		clock = new Timer(1000, world);
 		gameloop = new Timer(33, world);
@@ -61,7 +61,7 @@ public class GameWorld extends JComponent implements ActionListener {
 				
 			} */
 			test_image1.move(1,1);
-			test_image1.rotate(1);
+			//test_image1.rotate(1);
 			repaint();
 		}
 		else if (e.getSource() == clock) {
