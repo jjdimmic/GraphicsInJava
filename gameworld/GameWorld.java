@@ -55,15 +55,52 @@ public class GameWorld extends JComponent implements ActionListener {
 			object_forceY += gforce*object_mass;
 			
 			
-			/* if (test_image1.getTopLeftX() <= 0) {
+			if (test_image1.getTopLeftX() <= 0) {
 			    if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
-					object_rotation_force += test_image1.getTopLeftY()-test_image1.getCenterY()
+					if (object_forceX >= object_forceY) {
+						object_rotation_force += object_forceX;
+					}
+					else {
+						object_rotation_force += object_forceY;
+					}
+				}
+				if (test_image1.getTopLeftY() < test_image1.getCenterY()) {
+					if (object_forceX >= object_forceY) {
+						object_rotation_force -= object_forceX;
+					}
+					else {
+						object_rotation_force -= object_forceY;
+					}
+				}
 				test_image1.move(((int) test_image1.getTopLeftX()-1)*-1);
 				
 			}
+			
+			if (test_image1.getTopLeftX() >= 480) {
+			    if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
+					if (object_forceX >= object_forceY) {
+						object_rotation_force += object_forceX;
+					}
+					else {
+						object_rotation_force += object_forceY;
+					}
+				}
+				if (test_image1.getTopLeftY() < test_image1.getCenterY()) {
+					if (object_forceX >= object_forceY) {
+						object_rotation_force -= object_forceX;
+					}
+					else {
+						object_rotation_force -= object_forceY;
+					}
+				}
+				test_image1.move(((int) test_image1.getTopLeftX()-1)*-1);
+				
+			}
+			
+			
 			if (test_image1.getTopLeftX() >= worldWidth) {
 				
-			} */
+			}
 			test_image1.move(object_forceX,object_forceY);
 			test_image1.rotate(1);
 			repaint();
