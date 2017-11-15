@@ -61,36 +61,44 @@ public class JdImage {
 		this.botRightY = (float) (this.centerY + this.height/2);
 	}
 	
-	public float getTopLeftX() {
-		return this.topLeftX;
+	public int getCenterX() {
+		return this.centerX;
 	}
 	
-	public float getTopLeftY() {
-		return this.topLeftY;
+	public int getCenterY() {
+		return this.centerY;
 	}
 	
-	public float getTopRightX() {
-		return this.topRightX;
+	public int getTopLeftX() {
+		return Math.round(this.topLeftX);
 	}
 	
-	public float getTopRightY() {
-		return this.topRightY;
+	public int getTopLeftY() {
+		return Math.round(this.topLeftY);
 	}
 	
-	public float getBotLeftX() {
-		return this.botLeftX;
+	public int getTopRightX() {
+		return Math.round(this.topRightX);
 	}
 	
-	public float getBotLeftY() {
-		return this.botLeftY;
+	public int getTopRightY() {
+		return Math.round(this.topRightY);
 	}
 	
-	public float getBotRightX() {
-		return this.botRightX;
+	public int getBotLeftX() {
+		return Math.round(this.botLeftX);
 	}
 	
-	public float getBotRightY() {
-		return this.botRightY;
+	public int getBotLeftY() {
+		return Math.round(this.botLeftY);
+	}
+	
+	public int getBotRightX() {
+		return Math.round(this.botRightX);
+	}
+	
+	public int getBotRightY() {
+		return Math.round(this.botRightY);
 	}
 	
 	

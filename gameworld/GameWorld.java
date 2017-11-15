@@ -20,6 +20,7 @@ public class GameWorld extends JComponent implements ActionListener {
 	static int gforce = 2;
 	static int object_forceX = 0;
 	static int object_forceY = 0;
+	static int object_rotation_force = 0;
 	
 	public static void main(String[] args) {
 		JFrame window = new JFrame("Game World");
@@ -55,13 +56,16 @@ public class GameWorld extends JComponent implements ActionListener {
 			
 			
 			/* if (test_image1.getTopLeftX() <= 0) {
+			    if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
+					object_rotation_force += test_image1.getTopLeftY()-test_image1.getCenterY()
+				test_image1.move(((int) test_image1.getTopLeftX()-1)*-1);
 				
 			}
 			if (test_image1.getTopLeftX() >= worldWidth) {
 				
 			} */
-			test_image1.move(1,1);
-			//test_image1.rotate(1);
+			test_image1.move(object_forceX,object_forceY);
+			test_image1.rotate(1);
 			repaint();
 		}
 		else if (e.getSource() == clock) {
