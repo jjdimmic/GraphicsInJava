@@ -17,9 +17,9 @@ public class GameWorld extends JComponent implements ActionListener {
 	private static int seconds_passed = 0;
 	static JdImage test_image1;
 	static int object_mass = 1;
-	static int gforce = 2;
-	static int object_forceX = 0;
-	static int object_forceY = 0;
+	static int gforce = 1;
+	static int object_forceX = 20;
+	static int object_forceY = 1;
 	static int object_rotation_force = 0;
 	
 	public static void main(String[] args) {
@@ -40,6 +40,8 @@ public class GameWorld extends JComponent implements ActionListener {
 		
 	}
 	
+	public
+	
 	public void paintComponent(Graphics g) {
 		g.setColor(new Color(130,232,227));
 		g.fillRect(0,0,640,480);
@@ -56,53 +58,64 @@ public class GameWorld extends JComponent implements ActionListener {
 			
 			
 			if (test_image1.getTopLeftX() <= 0) {
-			    if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
-					if (object_forceX >= object_forceY) {
-						object_rotation_force += object_forceX;
-					}
+					if ( Math.abs(object_forceX) >= Math.abs(object_forceY) ) {
+						if (test_image1.getTopLeftY() < test_image1.getCenterY()) {
+							object_rotation_force -= object_forceX;
+						}
+						else if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
+							object_rotation_force += object_forceX;
+						}
+						else {
+							object_rotation_force += object_forceY;
+						}
 					else {
 						object_rotation_force += object_forceY;
 					}
-				}
-				if (test_image1.getTopLeftY() < test_image1.getCenterY()) {
-					if (object_forceX >= object_forceY) {
-						object_rotation_force -= object_forceX;
-					}
-					else {
-						object_rotation_force -= object_forceY;
-					}
-				}
-				test_image1.move(((int) test_image1.getTopLeftX()-1)*-1);
+				test_image1.move((test_image1.getTopLeftX()-1)*-1,0);
+				
 				
 			}
+			
 			
 			if (test_image1.getTopLeftX() >= 480) {
-			    if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
-					if (object_forceX >= object_forceY) {
-						object_rotation_force += object_forceX;
-					}
-					else {
-						object_rotation_force += object_forceY;
-					}
-				}
-				if (test_image1.getTopLeftY() < test_image1.getCenterY()) {
-					if (object_forceX >= object_forceY) {
-						object_rotation_force -= object_forceX;
-					}
+					if ( Math.abs(object_forceX) >= Math.abs(object_forceY) ) {
+						if (test_image1.getTopLeftY() < test_image1.getCenterY()) {
+							object_rotation_force -= object_forceX;
+						}
+						else if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
+							object_rotation_force += object_forceX;
+						}
+						else {
+							object_rotation_force -= object_forceY;
+						}
 					else {
 						object_rotation_force -= object_forceY;
 					}
-				}
-				test_image1.move(((int) test_image1.getTopLeftX()-1)*-1);
+				test_image1.move((test_image1.getTopLeftX() - 480+1)*-1,0); 
 				
 			}
 			
 			
-			if (test_image1.getTopLeftX() >= worldWidth) {
-				
-			}
+			
+			
+			
+			
+			
 			test_image1.move(object_forceX,object_forceY);
-			test_image1.rotate(1);
+			test_image1.rotate(object_rotation_force);
+			if (object_forceX < 0) {
+				object_forceX += 1;
+			}
+			else if (object_forceX < 0) {
+				object_forceX -= 1;
+			}
+			if (object_rotation_force < 0) {
+				object_rotation_force += 1;
+			}
+			else if (object_rotation_force < 0) {
+				object_rotation_force -= 1;
+			}
+			
 			repaint();
 		}
 		else if (e.getSource() == clock) {
