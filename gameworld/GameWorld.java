@@ -207,16 +207,16 @@ public class GameWorld extends JComponent implements ActionListener {
 			if (test_image1.getTopLeftY() >= worldHeight) {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getTopLeftX() < test_image1.getCenterX()) {
-							object_rotation_force -= object_forceY;
-						} else if (test_image1.getTopLeftY() > test_image1.getCenterY()) {
-							object_rotation_force += object_forceY;
+							object_rotation_force += Math.abs(object_forceY);
+						} else if (test_image1.getTopLeftX() > test_image1.getCenterX()) {
+							object_rotation_force -= Math.abs(object_forceY);
 						} else {
 							object_rotation_force += object_forceX;
 						}
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move((test_image1.getTopLeftY() - worldHeight+1)*-1,0); 
+				test_image1.move(0,(test_image1.getTopLeftY() - worldHeight+1)*-1); 
 				object_forceY = object_forceY*-1;
 				
 			}
@@ -224,16 +224,16 @@ public class GameWorld extends JComponent implements ActionListener {
 			if (test_image1.getTopRightY() >= worldHeight) {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getTopRightX() < test_image1.getCenterX()) {
-							object_rotation_force -= object_forceY;
-						} else if (test_image1.getTopRightY() > test_image1.getCenterY()) {
-							object_rotation_force += object_forceY;
+							object_rotation_force += Math.abs(object_forceY);
+						} else if (test_image1.getTopRightX() > test_image1.getCenterX()) {
+							object_rotation_force -= Math.abs(object_forceY);
 						} else {
 							object_rotation_force += object_forceX;
 						}
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move((test_image1.getTopRightY() - worldHeight+1)*-1,0); 
+				test_image1.move(0,(test_image1.getTopRightY() - worldHeight+1)*-1); 
 				object_forceY = object_forceY*-1;
 				
 			}
@@ -242,16 +242,16 @@ public class GameWorld extends JComponent implements ActionListener {
 			if (test_image1.getBotLeftY() >= worldHeight) {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getBotLeftX() < test_image1.getCenterX()) {
-							object_rotation_force -= object_forceY;
-						} else if (test_image1.getBotLeftY() > test_image1.getCenterY()) {
-							object_rotation_force += object_forceY;
+							object_rotation_force += Math.abs(object_forceY);
+						} else if (test_image1.getBotLeftX() > test_image1.getCenterX()) {
+							object_rotation_force -= Math.abs(object_forceY);
 						} else {
 							object_rotation_force += object_forceX;
 						}
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move((test_image1.getBotLeftY() - worldHeight+1)*-1,0); 
+				test_image1.move(0,(test_image1.getBotLeftY() - worldHeight+1)*-1); 
 				object_forceY = object_forceY*-1;
 				
 			}
@@ -260,16 +260,16 @@ public class GameWorld extends JComponent implements ActionListener {
 			if (test_image1.getBotRightY() >= worldHeight) {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getBotRightX() < test_image1.getCenterX()) {
-							object_rotation_force -= object_forceY;
-						} else if (test_image1.getBotRightY() > test_image1.getCenterY()) {
-							object_rotation_force += object_forceY;
+							object_rotation_force += Math.abs(object_forceY);
+						} else if (test_image1.getBotRightX() > test_image1.getCenterX()) {
+							object_rotation_force -= Math.abs(object_forceY);
 						} else {
 							object_rotation_force += object_forceX;
 						}
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move((test_image1.getBotRightY() - worldHeight+1)*-1,0); 
+				test_image1.move(0,(test_image1.getBotRightY() - worldHeight+1)*-1); 
 				object_forceY = object_forceY*-1;
 				
 			}

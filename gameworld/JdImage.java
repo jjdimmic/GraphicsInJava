@@ -127,7 +127,7 @@ public class JdImage {
 		
 		this.rotation += degrees;
 		if (this.rotation > 360 || this.rotation < -360) {
-			this.rotation = degrees;
+			this.rotation = this.rotation - ((this.rotation/360)*360);
 		}
 		
 		//----TopLeftPoint----
