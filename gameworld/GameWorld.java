@@ -18,7 +18,7 @@ public class GameWorld extends JComponent implements ActionListener {
 	static JdImage test_image1;
 	static int object_mass = 1;
 	static int gforce = 1;
-	static int object_forceX = 0;
+	static int object_forceX = 100;
 	static int object_forceY = 0;
 	static int object_rotation_force = 0;
 	
@@ -55,6 +55,21 @@ public class GameWorld extends JComponent implements ActionListener {
 		if (e.getSource() == gameloop) {
 			object_forceY += gforce*object_mass;
 			
+			test_image1.move(object_forceX,object_forceY);
+			test_image1.rotate(object_rotation_force);
+			if (object_forceX < 0) {
+				object_forceX += 1;
+			} else if (object_forceX > 0) {
+				object_forceX -= 1;
+			}
+			if (object_rotation_force < 0) {
+				object_rotation_force += 1;
+			} else if (object_rotation_force > 0) {
+				object_rotation_force -= 1;
+			}
+			
+			
+			//collision detection world/angular velocity calculations
 			
 			if (test_image1.getTopLeftX() <= 0) {
 					if ( Math.abs(object_forceX) >= Math.abs(object_forceY) ) {
@@ -69,7 +84,9 @@ public class GameWorld extends JComponent implements ActionListener {
 						object_rotation_force += object_forceY;
 					}
 				test_image1.move((test_image1.getTopLeftX()-1)*-1,0);
-				object_forceX = object_forceX*-1;
+				if (object_forceX < 0) {
+					object_forceX = object_forceX*-1;
+				}
 				
 				
 			}
@@ -87,9 +104,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force -= object_forceY;
 					}
-				test_image1.move((test_image1.getTopLeftX() - worldWidth+1)*-1,0); 
-				object_forceX = object_forceX*-1;
-				
+				test_image1.move((test_image1.getTopLeftX() - worldWidth+1)*-1,0);
+                if (object_forceX > 0) {
+					object_forceX = object_forceX*-1;
+				}
 			}
 			
 			
@@ -106,7 +124,9 @@ public class GameWorld extends JComponent implements ActionListener {
 						object_rotation_force += object_forceY;
 					}
 				test_image1.move((test_image1.getTopRightX()-1)*-1,0);
-				object_forceX = object_forceX*-1;
+				if (object_forceX < 0) {
+					object_forceX = object_forceX*-1;
+				}
 				
 				
 			}
@@ -124,8 +144,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force -= object_forceY;
 					}
-				test_image1.move((test_image1.getTopRightX() - worldWidth+1)*-1,0); 
-				object_forceX = object_forceX*-1;
+				test_image1.move((test_image1.getTopRightX() - worldWidth+1)*-1,0);
+				if (object_forceX > 0) {
+					object_forceX = object_forceX*-1;
+				}
 				
 			}
 			
@@ -143,7 +165,9 @@ public class GameWorld extends JComponent implements ActionListener {
 						object_rotation_force += object_forceY;
 					}
 				test_image1.move((test_image1.getBotLeftX()-1)*-1,0);
-				object_forceX = object_forceX*-1;
+				if (object_forceX < 0) {
+					object_forceX = object_forceX*-1;
+				}
 				
 				
 			}
@@ -161,8 +185,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force -= object_forceY;
 					}
-				test_image1.move((test_image1.getBotLeftX() - worldWidth+1)*-1,0); 
-				object_forceX = object_forceX*-1;
+				test_image1.move((test_image1.getBotLeftX() - worldWidth+1)*-1,0);
+				if (object_forceX > 0) {
+					object_forceX = object_forceX*-1;
+				}
 				
 			}
 			
@@ -180,7 +206,9 @@ public class GameWorld extends JComponent implements ActionListener {
 						object_rotation_force += object_forceY;
 					}
 				test_image1.move((test_image1.getBotRightX()-1)*-1,0);
-				object_forceX = object_forceX*-1;
+				if (object_forceX < 0) {
+					object_forceX = object_forceX*-1;
+				}
 				
 				
 			}
@@ -198,8 +226,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force -= object_forceY;
 					}
-				test_image1.move((test_image1.getBotRightX() - worldWidth+1)*-1,0); 
-				object_forceX = object_forceX*-1;
+				test_image1.move((test_image1.getBotRightX() - worldWidth+1)*-1,0);
+				if (object_forceX > 0) {
+					object_forceX = object_forceX*-1;
+				}
 			}
 			
 			//Ground collission detection
@@ -216,8 +246,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move(0,(test_image1.getTopLeftY() - worldHeight+1)*-1); 
-				object_forceY = object_forceY*-1;
+				test_image1.move(0,(test_image1.getTopLeftY() - worldHeight+1)*-1);
+				if (object_forceY > 0) {
+					object_forceY = object_forceY*-1;
+				}
 				
 			}
 			
@@ -233,8 +265,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move(0,(test_image1.getTopRightY() - worldHeight+1)*-1); 
-				object_forceY = object_forceY*-1;
+				test_image1.move(0,(test_image1.getTopRightY() - worldHeight+1)*-1);
+				if (object_forceY > 0) {
+					object_forceY = object_forceY*-1;
+				}
 				
 			}
 			
@@ -251,8 +285,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move(0,(test_image1.getBotLeftY() - worldHeight+1)*-1); 
-				object_forceY = object_forceY*-1;
+				test_image1.move(0,(test_image1.getBotLeftY() - worldHeight+1)*-1);
+				if (object_forceY > 0) {
+					object_forceY = object_forceY*-1;
+				}
 				
 			}
 			
@@ -269,30 +305,18 @@ public class GameWorld extends JComponent implements ActionListener {
 					} else {
 						object_rotation_force += object_forceX;
 					}
-				test_image1.move(0,(test_image1.getBotRightY() - worldHeight+1)*-1); 
-				object_forceY = object_forceY*-1;
+				test_image1.move(0,(test_image1.getBotRightY() - worldHeight+1)*-1);
+				if (object_forceY > 0) {
+					object_forceY = object_forceY*-1;
+				}
 				
-			}
-			
-			
-			test_image1.move(object_forceX,object_forceY);
-			test_image1.rotate(object_rotation_force);
-			if (object_forceX < 0) {
-				object_forceX += 1;
-			} else if (object_forceX > 0) {
-				object_forceX -= 1;
-			}
-			if (object_rotation_force < 0) {
-				object_rotation_force += 1;
-			} else if (object_rotation_force > 0) {
-				object_rotation_force -= 1;
 			}
 			
 			repaint();
 		} else if (e.getSource() == clock) {
 			seconds_passed+=1;
 			System.out.printf("%s seconds have passed\n",seconds_passed);
-			if (seconds_passed >= 10) {
+			if (seconds_passed >= 20) {
 				
 				clock.stop();
 				System.out.println("game world clock stopped");
