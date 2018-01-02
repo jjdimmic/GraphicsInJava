@@ -238,8 +238,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getTopLeftX() < test_image1.getCenterX()) {
 							object_rotation_force += Math.abs(object_forceY);
+							object_forceX += Math.abs(object_forceY)/2;
 						} else if (test_image1.getTopLeftX() > test_image1.getCenterX()) {
 							object_rotation_force -= Math.abs(object_forceY);
+							object_forceX -= Math.abs(object_forceY)/2;
 						} else {
 							object_rotation_force += object_forceX;
 						}
@@ -257,8 +259,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getTopRightX() < test_image1.getCenterX()) {
 							object_rotation_force += Math.abs(object_forceY);
+							object_forceX += Math.abs(object_forceY)/2;
 						} else if (test_image1.getTopRightX() > test_image1.getCenterX()) {
 							object_rotation_force -= Math.abs(object_forceY);
+							object_forceX -= Math.abs(object_forceY)/2;
 						} else {
 							object_rotation_force += object_forceX;
 						}
@@ -277,8 +281,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getBotLeftX() < test_image1.getCenterX()) {
 							object_rotation_force += Math.abs(object_forceY);
+							object_forceX += Math.abs(object_forceY)/2;
 						} else if (test_image1.getBotLeftX() > test_image1.getCenterX()) {
 							object_rotation_force -= Math.abs(object_forceY);
+							object_forceX -= Math.abs(object_forceY)/2;
 						} else {
 							object_rotation_force += object_forceX;
 						}
@@ -297,8 +303,10 @@ public class GameWorld extends JComponent implements ActionListener {
 					if ( Math.abs(object_forceY) >= Math.abs(object_forceX) ) {
 						if (test_image1.getBotRightX() < test_image1.getCenterX()) {
 							object_rotation_force += Math.abs(object_forceY);
+							object_forceX += Math.abs(object_forceY)/2;
 						} else if (test_image1.getBotRightX() > test_image1.getCenterX()) {
 							object_rotation_force -= Math.abs(object_forceY);
+							object_forceX -= Math.abs(object_forceY)/2;
 						} else {
 							object_rotation_force += object_forceX;
 						}
