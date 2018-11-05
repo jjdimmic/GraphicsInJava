@@ -53,6 +53,12 @@ public class GameWorld extends JComponent implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == gameloop) {
+			//Printing out forces
+			System.out.printf("Object Force X: %d\n",object_forceX);
+			System.out.printf("Object Rotate Force: %d\n",object_rotation_force);
+			System.out.printf("Object Force Y: %d\n",object_forceY);
+			
+			
 			object_forceY += gforce*object_mass;
 			
 			test_image1.move(object_forceX,object_forceY);
